@@ -1,0 +1,195 @@
+\documentclass[margin,line,pifont,palatino,courier]{res}
+
+
+\usepackage{longtable}
+\usepackage{pifont}
+\usepackage[latin1] { inputenc}
+
+%\topmargin .5in
+%\oddsidemargin -.5in
+%\evensidemargin -.5in
+%\textwidth=6.0in
+ \textheight=9.0in
+%\itemsep=0in
+%\parsep=0in
+\usepackage{fancyhdr}
+%\topmargin=0in
+%\textheight=8.5in
+\pagestyle{fancy}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhf{}
+%\cfoot{\thepage}
+%\lfoot{\textit{\footnotesize Research Statement}}
+\rfoot{{\footnotesize Curriculum Vitae, Vimal Manohar, \thepage}}
+
+
+\newenvironment{list1}{
+  \begin{list}{\ding{113}}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in}
+      \setlength{\leftmargin}{0.17in}}}{\end{list}}
+\newenvironment{list2}{
+  \begin{list}{$\bullet$}{%
+      \setlength{\itemsep}{0in}
+      \setlength{\parsep}{0in} \setlength{\parskip}{0in}
+      \setlength{\topsep}{0in} \setlength{\partopsep}{0in}
+      \setlength{\leftmargin}{0.2in}}}{\end{list}}
+
+\begin{document}
+
+\name{Vimal Manohar \vspace*{.1in}}
+
+\begin{resume}
+
+\section{\sc Contact Information}
+
+\vspace{.05in}
+\begin{tabular}{@{}p{2.75in}p{2in}}
+Center for language and Speech Processing (CLSP) \\
+Electrical and Computer Eng. Department                        & \verb+vimal.manohar91@gmail.com+\\
+Johns Hopkins University                  & \verb+http://vimalmanohar.github.io+\\
+3400 North Charles Street               & \\
+Baltimore, Maryland 21218 USA               & \\
+\end{tabular}
+
+\section{\sc Research Interests}
+Machine Learning with applications to acoustic modeling for automatic speech recognition
+
+\section{\sc Education}
+
+\textbf{Johns Hopkins University, Baltimore, MD} \\
+\vspace*{-.1in}
+\begin{list1}
+\item[] Ph.D.~Candidate, ECE (expected May 2018)
+
+\begin{list2}
+\vspace*{.05in}
+\item Advisors: Daniel Povey and Sanjeev Khudanpur
+\end{list2}
+\end{list1}
+
+\textbf{Indian Institute of Technology Madras, Chennai, India} \\
+\vspace*{-.1in}
+\begin{list1}
+\item[(2009-2013)] B.Tech in Electrical Engineering
+
+\begin{list2}
+\vspace*{.05in}
+\item Thesis Topic: Acoustic Modeling using Phone Transform CAT for Speech Recognition
+\item Advisor: S Umesh
+\end{list2}
+\end{list1}
+
+\section{\sc Publications}
+\begin{itemize}
+  \item 
+    \textbf{Manohar, V.}; Povey, D.; Khudanpur, S., 
+    \textit{``Semi-supervised Maximum Mutual Information Training of Deep Neural
+    Network Acoustic Model,"}
+    INTERSPEECH 2015. Nominated for best students' paper.
+  \item
+    Trmal, J.; \textbf{Manohar, V.} et al., 
+    \textit{``A keyword search system using open source software," } 
+    Spoken Language Technology Workshop (SLT), 2014 IEEE , vol., no., pp.530,535, 7-10 Dec. 2014
+    doi: 10.1109/SLT.2014.7078630 
+  \item
+    \textbf{Manohar, V.}; Srinivas, C.B.; Umesh, S., 
+    \textit{``Acoustic modeling
+    using transform-based phone-cluster adaptive training,"} 
+    Automatic Speech Recognition and Understanding (ASRU), 2013 IEEE Workshop on
+    , vol., no., pp.49,54, 8-12 Dec. 2013 doi: 10.1109/ASRU.2013.6707704
+\end{itemize}
+\section{\sc Research and Industrial Experience}
+
+\begin{longtable}{@{}p{1.2in}p{3.8in}}
+
+\textbf{July '15--August '15} & \textbf{Jelinek Summer Workshop on Speech and Language Technology (JSALT) 2015 } \\
+& Member of the research group working on ``Probabilitic Transcription of Languages with no native-language transcribers''\\
+&\\
+\textbf{Aug '13--Present} & \textbf{Research Assistant at Center for Language and Speech Processing, Johns Hopkins University.} \\
+&\textit{Babel}: Funded by IARPA \\
+& Developed acoustic models for languages in low-resource setting, automatic
+speech segmentation for ASR using HMM-GMM models, semi-supervised training
+approaches for hybrid HMM-DNNs and Bottleneck feature NNs \\ & (published in
+SLT, 2014). \\
+&\\
+&\textit{BOLT}: Funded by DARPA\\
+& Developed multilingual-architecture DNN systems for transfer learning from standard Arabic to Egyptian Arabic\\
+&\\
+\textbf{Sept '12--May '13}& \textbf{Bachelor's Thesis Project}\\
+& Proposed a new acoustic modeling technique, where the parameters of
+context-dependent states are obtained by the linear interpolation of several
+monophone cluster models, which are themselves obtained by adaptation using
+linear transformation of a canonical Gaussian Mixture Model (GMM).
+(published in ASRU, 2013)\\
+&\\
+\textbf{May '12--July '12}& \textbf{Research Intern at University of Bremen, Germany} \\
+& Implemented a method for estimation of size, position and orientation of
+isolated 3D objects using a single pair of stereo images by fitting the 3D
+object with multiple superquadrics \\
+&\\
+\textbf{Sept '11--Feb '12}& \textbf{Texas Instruments Analog Design Contest
+2011} \\
+& Designed and constructed a pulse oximeter for real-time estimation of
+respiratory rate. Among the top 25 entries to the TI India Analog Design Contest 2011.\\
+&\\
+\end{longtable}
+
+%\section{\sc Teaching Experience}
+%
+%\begin{tabular}{@{}p{0.4in}p{0.5in}p{4in}}
+%Spring & 2013 & Teaching Assistant, Speech and audio processing by humans and machines\\
+%\\
+%Fall & 2012,2013 & Teaching Assistant, Processing of audio and visual signals\\
+%\end{tabular}
+
+
+\section{\sc Coursework}
+
+\begin{tabular}{@{}p{2.3in}p{3in}}
+\begin{list1}
+\item Representation learning
+\item Speech and audio processing by humans and machines
+\item Information Extraction
+\item Matrix Analysis
+\item Random Signal Analysis
+\item Speech Technology
+
+\end{list1}
+&
+\begin{list1}
+\item Processing of audio and visual signals
+\item Information Theory
+\item Compressed Sensing and Sparse Recovery
+\item Graph Theory
+\item Advanced Operations Research
+\end{list1}
+
+\end{tabular}
+
+\section{\sc Academic \\ Distinctions}
+\begin{itemize} \itemsep -2pt
+    \item Gradutate Research Assistant (2014-2015, Johns Hopkins Univeristy)
+    \item ECE Graduate Fellowship 2013, Johns Hopkins University
+    \item Hamburger Fellowship 2013, Johns Hopkins Univeristy
+        \item All India Rank \textbf{191} in {IIT-Joint Entrance Examination (IIT-JEE)} 2009 (among over 400,000 students) 
+        \item Awarded Kishore Vaignayik Protsahan Yojana (KVPY) Fellowship 2008 by Dept. of Science and Technology, Govt. of India
+        \item Awarded National Talent Search (NTS) Scholarship 2007 by National Council of Education, Research and Training, Govt. of India
+    \end{itemize}
+
+\section{\sc Skills}
+
+\begin{tabular}{@{}p{0.8in}p{6in}}
+
+Languages:& C/C++, Python, Bash, MATLAB\\
+Toolkits: & KALDI, HTK \\
+
+\end{tabular}
+
+\section{\sc References}
+
+Will be provided on request.
+
+\end{resume}
+\end{document}
