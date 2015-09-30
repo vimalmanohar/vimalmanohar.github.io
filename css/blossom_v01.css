@@ -1,0 +1,54 @@
+/* 
+** blue:blossom - design variation 01 - "bright blue blossom"
+**
+** This file contains a design variation of the base
+** stylesheet.
+** 
+** April 14, 2007 - (version 1.0)
+** 
+** This is a part of the open source template
+** "blue:blossom" made by Jonas John (www.jonasjohn.de)
+*/
+
+/* cover picture */
+#inner_cover { background-image: url("../images/cover_blossom.jpg"); }
+	
+/* area next to the cover image: */
+#cover { background-color: #B4D8FA; }
+	
+	
+/* image colors: */
+
+.image {
+	background-color: #B4D8FA;
+}
+	
+.image:hover {
+	background-color: #812F24;
+} 
+	
+/* navigation */
+#inner_header ul li a:hover, #inner_header ul li a:active { background-color: #812F24; }
+
+/* content link colors */
+#content a:hover, #content a:active { background-color: #812F24; }
+
+
+/* borders: */       
+
+#inner_header {
+	border-left: 1px solid #B4D8FA; 
+	border-right: 1px solid #B4D8FA; 
+	border-top: 1px solid #B4D8FA; 
+}
+				
+#inner_content {
+	border-left: 1px solid #B4D8FA; 
+	border-right: 1px solid #B4D8FA; 
+	border-bottom: 1px solid #B4D8FA; 
+}
+
+#inner_cover {
+	border-left: 1px solid #818493; 
+	border-right: 1px solid #818493; 
+}

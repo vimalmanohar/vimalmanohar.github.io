@@ -1,0 +1,45 @@
+/* 
+** blue:blossom - design variation 08 - "reversed night"
+**
+** This file contains a design variation of the base
+** stylesheet.
+** 
+** April 14, 2007 - (version 1.0)
+** 
+** This is a part of the open source template
+** "blue:blossom" made by Jonas John (www.jonasjohn.de)
+*/
+
+/* page background */
+body { background-color: #D9ECFD; }
+
+/* area next to the cover image: */
+#cover { background-color: #000000; }
+	
+/* cover picture */
+#inner_cover { background-image: url("../images/cover_night.jpg"); }
+	
+/* image colors: */
+.image {
+	background-color: #D9ECFD;
+}
+
+.image:hover {
+	background-color: #000000;
+} 
+
+/* navigation */
+#inner_header ul li a:hover, #inner_header ul li a:active { 
+	background-color: #000000;
+}
+
+/* content link colors */
+#content a:hover, #content a:active { 
+	background-color: #000000;
+}
+
+/* borders: */  
+#inner_cover {
+	border-left: 1px solid #381800; 
+	border-right: 1px solid #381800; 
+}

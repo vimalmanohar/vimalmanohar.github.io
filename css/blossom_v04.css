@@ -1,0 +1,68 @@
+/* 
+** blue:blossom - design variation 04 - "grass green"
+**
+** This file contains a design variation of the base
+** stylesheet.
+** 
+** April 14, 2007 - (version 1.0)
+** 
+** This is a part of the open source template
+** "blue:blossom" made by Jonas John (www.jonasjohn.de)
+*/
+
+/* cover picture */
+#inner_cover { 
+	background-image: url("../images/cover_grass.jpg");
+}
+	
+/* area next to the cover image: */
+#cover {
+	background-color: #C8E2A5;
+}
+	
+	
+/* image colors: */
+.image { background-color: #C8E2A5; }            
+.image:hover { background-color: #9ECC60; } 
+	
+	
+/* navigation */
+#inner_header ul li a:link, #inner_header ul li a:visited { 
+	background-color: #E2F0D0;
+}
+
+#inner_header ul li a:hover, #inner_header ul li a:active {
+	background-color: #C8E2A5;
+	color: #000000;
+}
+
+
+/* content link colors */
+#content a:link, #content a:visited {
+	background-color: #E2F0D0;
+}
+
+#content a:hover, #content a:active {
+	background-color: #C8E2A5; 
+	color: #000000;
+}
+
+
+/* borders: */        
+#inner_header {
+	border-left: 1px solid #C8E2A5; 
+	border-right: 1px solid #C8E2A5; 
+	border-top: 1px solid #C8E2A5; 
+}
+				
+#inner_content {
+	border-left: 1px solid #C8E2A5; 
+	border-right: 1px solid #C8E2A5; 
+	border-bottom: 1px solid #C8E2A5; 
+}
+
+#inner_cover {
+	border-left: 1px solid #5B8136; 
+	border-right: 1px solid #5B8136; 
+}
+

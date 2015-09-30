@@ -1,0 +1,46 @@
+/* 
+** blue:blossom - design variation 01 - "lemon green"
+**
+** This file contains a design variation of the base
+** stylesheet.
+** 
+** April 14, 2007 - (version 1.0)
+** 
+** This is a part of the open source template
+** "blue:blossom" made by Jonas John (www.jonasjohn.de)
+*/
+
+/* page background */
+body { background-color: #9CCB0B; } 
+
+/* area next to the cover image: */
+#cover { background-color: #6AAA33; }
+	
+/* cover picture */
+#inner_cover { background-image: url("../images/cover_lemon.jpg"); }
+	
+/* image colors: */
+.image {
+	background-color: #B0CB02;
+}
+	
+.image:hover {
+	background-color: #B3D743;
+} 
+
+/* navigation */
+#inner_header ul li a { background-color: #9CCB0B; color: #FFFFFF; }
+#inner_header ul li a:link { background-color: #9CCB0B; }
+#inner_header ul li a:hover, #inner_header ul li a:active { background-color: #6AAA33; }
+#inner_header h1 { color: #6AAA33; }
+
+/* content link colors */
+#content a:link, #content a:visited { 
+	background-color: #9CCB0B; 
+	color: #FFFFFF; 
+	padding: 1px 3px;
+}
+
+#content a:hover, #content a:active { 
+	background-color: #6AAA33;
+}

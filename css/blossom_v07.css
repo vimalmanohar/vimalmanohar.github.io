@@ -1,0 +1,45 @@
+/* 
+** blue:blossom - design variation 07 - "mellow blossom"
+**
+** This file contains a design variation of the base
+** stylesheet.
+** 
+** April 14, 2007 - (version 1.0)
+** 
+** This is a part of the open source template
+** "blue:blossom" made by Jonas John (www.jonasjohn.de)
+*/
+
+/* page background */
+body { background-color: #E4E4D2; }
+
+/* cover picture */
+#inner_cover { background-image: url("../images/cover_blossom.jpg"); }
+	
+
+/* area next to the cover image: */
+#cover { background-color: #D9ECFD; }
+	
+	
+/* image colors: */
+.image {
+	background-color: #A5D1FA;
+}
+	
+.image:hover {
+	background-color: #844816;
+} 
+	
+/* navigation */
+#inner_header ul li a:hover, #inner_header ul li a:active { 
+	background-color: #844816; 
+	color: #FFFFFF; 
+	border-right: 1px solid #9D6D45; 
+	border-bottom: 1px solid #9D6D45;
+}
+
+/* content link colors */
+#content a:hover, #content a:active { 
+	background-color: #844816; 
+	color: #FFFFFF;
+}

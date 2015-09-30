@@ -3,13 +3,20 @@
 
 \usepackage{longtable}
 \usepackage{pifont}
-\usepackage[latin1] { inputenc}
+\usepackage[latin1] {inputenc}
+
+\topmargin=-0.45in
+\evensidemargin=-.25in
+\oddsidemargin=-.25in
+\textwidth=5.5in
+\textheight=10.0in
+\headsep=0.25in
 
 %\topmargin .5in
 %\oddsidemargin -.5in
 %\evensidemargin -.5in
 %\textwidth=6.0in
- \textheight=9.0in
+%\textheight=9.0in
 %\itemsep=0in
 %\parsep=0in
 \usepackage{fancyhdr}
@@ -45,41 +52,31 @@
 \section{\sc Contact Information}
 
 \vspace{.05in}
-\begin{tabular}{@{}p{2.75in}p{2in}}
-Center for language and Speech Processing (CLSP) \\
-Electrical and Computer Eng. Department                        & \verb+vimal.manohar91@gmail.com+\\
-Johns Hopkins University                  & \verb+http://vimalmanohar.github.io+\\
-3400 North Charles Street               & \\
-Baltimore, Maryland 21218 USA               & \\
+\begin{tabular}{l l}
+The Center for Language and Speech Processing, \\
+Hackerman Hall 322,\\
+3400 North Charles Street,                        & \verb+vimal.manohar91@gmail.com+\\
+Johns Hopkins University,                  & \verb+http://vimalmanohar.github.io+\\
+Baltimore, MD 21218, USA               & \\
 \end{tabular}
 
 \section{\sc Research Interests}
-Machine Learning with applications to acoustic modeling for automatic speech recognition
+Automatic Speech Recognition, Machine Learning, Speech Signal Processing, Natural Language Processing
 
 \section{\sc Education}
 
 \textbf{Johns Hopkins University, Baltimore, MD} \\
-\vspace*{-.1in}
-\begin{list1}
-\item[] Ph.D.~Candidate, ECE (expected May 2018)
-
-\begin{list2}
-\vspace*{.05in}
-\item Advisors: Daniel Povey and Sanjeev Khudanpur
-\end{list2}
-\end{list1}
+Major: Electrical \& Computer Engineering \\
+Master of Science in Engineering (M.S.E.), 2015\\
+Ph.D., 2018 (Expected) \\
+Advisors: Sanjeev Khudanpur and Daniel Povey
 
 \textbf{Indian Institute of Technology Madras, Chennai, India} \\
-\vspace*{-.1in}
-\begin{list1}
-\item[(2009-2013)] B.Tech in Electrical Engineering. (CGPA: 9.6/10)
+Major: Electrical Engineering, \quad Minor: Operations Research \\
+Bachelor of Technology (B.Tech), 2013 (CGPA: 9.6/10) \\
+Advisor: S Umesh, \\
 
-\begin{list2}
-\vspace*{.05in}
-\item Thesis Topic: Acoustic Modeling using Phone Transform CAT for Speech Recognition
-\item Advisor: S Umesh
-\end{list2}
-\end{list1}
+\vspace{-2pt}
 
 \section{\sc Publications}
 \begin{itemize}
@@ -87,7 +84,7 @@ Machine Learning with applications to acoustic modeling for automatic speech rec
     \textbf{Manohar, V.}; Povey, D.; Khudanpur, S., 
     \textit{``Semi-supervised Maximum Mutual Information Training of Deep Neural
     Network Acoustic Model,"}
-    INTERSPEECH 2015. Nominated for best students' paper.
+    INTERSPEECH 2015. \textbf{Nominated for best students' paper award}.
   \item
     Trmal, J.; \textbf{Manohar, V.} et al., 
     \textit{``A keyword search system using open source software," } 
@@ -102,47 +99,55 @@ Machine Learning with applications to acoustic modeling for automatic speech rec
 \end{itemize}
 \section{\sc Research and Industrial Experience}
 
-\begin{longtable}{@{}p{1.2in}p{3.8in}}
+\textbf{Jelinek Summer Workshop on Speech and Language Technology (JSALT) 2015 } \\
+University of Washington Seattle, Seattle, WAS, USA \hfill 
+July -- August '15 \vspace{2pt} \\
+Member of the research group working on ``Probabilitic Transcription of Languages with no native-language transcribers''. We showed the utility of mismatched transcriptions from non-native crowdworkers for ASR. (submitted to ICASSP, 2016)
+\vspace{-5pt}
 
-\textbf{July '15--August '15} & \textbf{Jelinek Summer Workshop on Speech and Language Technology (JSALT) 2015 } \\
-& Member of the research group working on ``Probabilitic Transcription of Languages with no native-language transcribers''\\
-&\\
-\textbf{Aug '13--Present} & \textbf{Research Assistant at Center for Language and Speech Processing, Johns Hopkins University.} \\
-&\textit{Babel}: Funded by IARPA \\
-& Developed acoustic models for languages in low-resource setting, automatic
-speech segmentation for ASR using HMM-GMM models, semi-supervised training
-approaches for hybrid HMM-DNNs and Bottleneck feature NNs \\ & (published in
-SLT, 2014). \\
-&\\
-&\textit{BOLT}: Funded by DARPA\\
-& Developed multilingual-architecture DNN systems for transfer learning from standard Arabic to Egyptian Arabic\\
-&\\
-\textbf{Sept '12--May '13}& \textbf{Bachelor's Thesis Project}\\
-& Proposed a new acoustic modeling technique, where the parameters of
-context-dependent states are obtained by the linear interpolation of several
-monophone cluster models, which are themselves obtained by adaptation using
-linear transformation of a canonical Gaussian Mixture Model (GMM).
+\textbf{Research Assistant at The Center for Language and Speech Processing} \\
+Johns Hopkins University, Baltimore, MD, USA \hfill Aug '13 -- Present \vspace{2pt} \\
+\textit{IARPA Babel} \\
+Developed acoustic models for languages in low-resource setting, HMM-GMM based automatic
+speech segmentation for ASR, semi-supervised training
+approaches for hybrid HMM-DNNs and bottleneck feature NNs \\ 
+(published in SLT, 2014). \\
+\\
+\textit{DARPA BOLT}\\
+Developed multilingual-architecture DNN systems for transfer learning from standard Arabic to Egyptian Arabic\\
+\vspace{-5pt}
+
+\textbf{Intern at Analog Devices Inc.} \\
+Cambridge, MA, USA\hfill May -- Aug '14 \vspace{2pt} \\
+Worked on time-frequency masks with multichannel audio for robust speech recognition
+\vspace{-5pt}
+
+\textbf{Bachelor's Thesis Project} \\
+Indian Institute of Technology Madras, Chennai, India\hfill Sept '12 -- May '13 \vspace{2pt}  \\
+Proposed a modification to the HMM-GMM acoustic modeling technique to deal with low-resource settings. We constrained the subspace containing HMM-GMM mean vectors to be defined by piecewise linear transformations of canonical GMM means. \\
 (published in ASRU, 2013)\\
-&\\
-\textbf{May '12--July '12}& \textbf{Research Intern at University of Bremen, Germany} \\
-& Implemented a method for estimation of size, position and orientation of
-isolated 3D objects using a single pair of stereo images by fitting the 3D
-object with multiple superquadrics \\
-&\\
-\textbf{Sept '11--Feb '12}& \textbf{Texas Instruments Analog Design Contest
-2011} \\
-& Designed and constructed a pulse oximeter for real-time estimation of
-respiratory rate. Among the top 25 entries to the TI India Analog Design Contest 2011.\\
-&\\
-\end{longtable}
+\vspace{-5pt}
 
-%\section{\sc Teaching Experience}
-%
-%\begin{tabular}{@{}p{0.4in}p{0.5in}p{4in}}
-%Spring & 2013 & Teaching Assistant, Speech and audio processing by humans and machines\\
-%\\
-%Fall & 2012,2013 & Teaching Assistant, Processing of audio and visual signals\\
-%\end{tabular}
+\textbf{Time-scaling and Pitch-scaling of synthesized speech} \\
+Indian Institute of Technology Madras, Chennai, India \hfill March -- May '12 \vspace{2pt} \\
+Investigated algorithms for robust VAD, robust pitch estimation, pitch-mark extraction, pitch synchronous overlap-add method of speech synthesis to change the duration and pitch of speech signals
+\vspace{-5pt}
+
+\textbf{Research Intern at The Institute of Automation}  \\
+University of Bremen, Bremen, Germany\hfill May -- July '12 \vspace{2pt}\\
+Implemented a method for estimation of size, position and orientation of
+isolated 3D objects using a single pair of stereo images \\
+\vspace{-5pt}
+
+\textbf{Texas Instruments Analog Design Contest 2011} \\
+Indian Institute of Technology Madras, Chennai, India \hfill Sept '11 -- Feb '12 \vspace{2pt} \\
+Designed and constructed a pulse oximeter on an embedded system for real-time estimation of respiratory rate. Among the top 25 entries to the TI India Analog Design Contest 2011.\\
+\vspace{-5pt}
+
+\section{\sc Teaching Experience}
+\begin{tabular}{@{}p{0.9in} p{4in}}
+Fall 2015 & Teaching Assistant, Random Signal Analysis \\
+\end{tabular}
 
 
 \section{\sc Coursework}
@@ -154,29 +159,51 @@ respiratory rate. Among the top 25 entries to the TI India Analog Design Contest
 \item Information Extraction
 \item Matrix Analysis
 \item Random Signal Analysis
-\item Speech Technology
 
 \end{list1}
 &
 \begin{list1}
-\item Processing of audio and visual signals
-\item Information Theory
+\item Speech Technology
 \item Compressed Sensing and Sparse Recovery
+\item Information Theory
 \item Graph Theory
 \item Advanced Operations Research
 \end{list1}
 
 \end{tabular}
 
-\section{\sc Academic \\ Distinctions}
+%\section{\sc Extra-\\ Curricular \\ Activities}
+%
+%    \textbf{Robotics} 
+%\begin{itemize} \itemsep -2pt
+%        \item Member of the team representing IIT Madras at the National Robotic Contest, Abu Robocon 2011. The team finished among the Top 5 in the country.
+%        \item Winner of Autonomous Robotics and Image Processing Robotics competitions held at Techfest 2012, the technical festival of NIT Trichy
+%    \end{itemize}
+%
+%    \textbf{Electronics} 
+%\begin{itemize} \itemsep -2pt
+%        \item Designed an accelerometer-gyroscore-magnetometer-based \emph{3D mouse} for controlling 3D CAD objects. The design won \textit{the GE Industrial Defined Problem} at Shaastra 2012, the technical festival of IIT Madras. 
+%    \end{itemize}
+%
+%    \textbf{Community Service} 
+%\begin{itemize} \itemsep -2pt
+%    \item Volunteer for Association for India Development (AID), a charity
+%      organization supporting sustainable development projects in India.
+%    \item Volunteered for National Social Service (NSS) at IIT Madras (2009-10). Devised scientific experiments and models and created scientific website content for teaching secondary school students.
+%  \end{itemize}
+
+\section{\sc Distinctions}
 \begin{itemize} \itemsep -2pt
-    \item Gradutate Research Assistant (2014-2015, Johns Hopkins Univeristy)
     \item ECE Graduate Fellowship 2013, Johns Hopkins University
     \item Hamburger Fellowship 2013, Johns Hopkins Univeristy
-        \item All India Rank \textbf{191} in {IIT-Joint Entrance Examination (IIT-JEE)} 2009 (among over 400,000 students) 
-        \item Awarded Kishore Vaignayik Protsahan Yojana (KVPY) Fellowship 2008 by Dept. of Science and Technology, Govt. of India
-        \item Awarded National Talent Search (NTS) Scholarship 2007 by National Council of Education, Research and Training, Govt. of India
-    \end{itemize}
+    \item WISE Scholarship 2012, DAAD, Germany
+    \item All India Rank \textbf{191} in {IIT-Joint Entrance Examination (IIT-JEE)} 2009 (among over 400,000 students) 
+    \item Awarded Kishore Vaignayik Protsahan Yojana (KVPY) Fellowship 2008 by Dept. of Science and Technology, Govt. of India
+    \item Awarded National Talent Search (NTS) Scholarship 2007 by National Council of Education, Research and Training, Govt. of India
+    \item Member of IIT Madras team at the National Robotics Contest, Abu Robocon 2011. Placed among the Top 5 in India
+    %\item Winner of Autonomous robotics and Image processing robotics at Techfest 2012, NIT Trichy, India
+    \item Winner of GE Industrial Defined Problem at Shaastra 2012, IIT Madras, India for design of accelerometer-gyroscope-magnetometer-based 3D-mouse
+  \end{itemize}
 
 \section{\sc Skills}
 

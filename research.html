@@ -1,0 +1,234 @@
+<?xml version="1.0"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html
+  lang="en" xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+  <head>
+    <meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
+    <title>Vimal Manohar</title>
+    <!-- version 1.0 - released Apr 14, 2007 -->
+    <meta name="generator" content="Free template made by Jonas John (www.jonasjohn.de)" />
+    <meta name="description" content="Speech Researcher at CLSP, Johns Hopkins University" />
+    <meta name="keywords" content="Vimal Manohar, Speech Recognition, PhD, CLSP" />
+    <!-- base stylesheet - construct -->
+    <link rel="stylesheet" type="text/css" href="css/blossom_base.css" media="screen, tv, projection"
+      title="Default" />
+    <!-- additional stylesheet -->
+    <link rel="stylesheet" type="text/css" href="css/blossom_v09.css" media="screen, tv, projection" />
+    <!-- print stylesheet (and print preview) -->
+    <link rel="stylesheet" type="text/css" href="css/print.css" media="print" />
+    <link rel="alternative stylesheet" type="text/css" href="css/print.css" media="screen"
+      title="Print Preview" />
+  </head>
+  <body id="your-site-id">
+    <div id="page">
+      <div id="header" class="full">
+        <div id="inner_header" class="centered">
+          <h1><a href="#startpage" title="Vimal Manohar">Vimal Manohar<br />
+            </a></h1>
+          <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="research.html">Research</a></li>
+            <li><a href="publications.html">Publications</a></li>
+            <li><a href="academics.html">Academics</a></li>
+            <li><a href="resume.html">Resume</a></li>
+            <li><a href="activities.html">Activities</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
+          <br class="clear" />
+        </div>
+      </div>
+      <div class="full">
+        <div id="inner_content" class="centered">
+          <div id="content">
+            <h1>Research</h1>
+            <p>For a list of my publications, go <a href="file:///home/vimal/vimalmanohar.github.io/publications.html">
+                here</a>. </p>
+            <h4><u> Areas of Interest</u> </h4>
+            <ul>
+              <li> Acoustic modeling for automatic speech recognition</li>
+              <li> Semi-supervised and unsupervised learning of acoustic and
+                language models </li>
+              <li> Multilingual and low-resource speech recognition </li>
+              <li> Machine learning applications</li>
+            </ul>
+            <p> </p>
+            <h4><u> Recent Project Works</u></h4>
+            <ol>
+              <li> <b> Probabilitic Transcription of Languages with no
+                  native-language transcribers</b> <br />
+                <i>Jelinek Summer Workshop on Speech and Language Technology
+                  (JSALT) 2015, </i> University of Washingon Seattle, Seattle,
+                WAS, USA, July - Aug 2015
+                <ul>
+                  <li> We wanted to study the utility of mismatched
+                    transcriptions in automatic speech recognition systems.
+                    Mismatched transcriptions refers to the speech
+                    transcriptions provided by people not familiar with the
+                    language the speech is in. e.g. Mandarin speech transcribed
+                    by English speakers using English letter sequences. The
+                    mismatch transcripts are useful because they are fairly easy
+                    to obtain for any language using crowdworkers.</li>
+                  <li>The prior work by Preethi et. al. could be used to convert
+                    a set of mismatched transcriptions into a probabilistic
+                    transcription that uses a sausage structure to represent the
+                    confusions between the phones.</li>
+                  <li>We used less than an hour of mismatched transcriptions to
+                    adapt baseline multilingual models to the target language.
+                    The adapted models gave up to 25% relative improvement in
+                    phone error rates on an unseen evaluation set. </li>
+                  <li>These improvements were significantly better than
+                    improvements seen with semi-supervised trainig using ASR
+                    transcripts of unlabelled data in target language. This
+                    experiment shows utility of the mismatched transcriptions
+                    compared to other forms of weak transcriptions such as ASR
+                    decode output</li>
+                </ul>
+              </li>
+              <li> <b> Semi-supervised Maximum Mutual Information Training of
+                  Deep neural network acoustic models</b> <br />
+                <i>Center for Language and Speech Processing (CLSP), </i> Johns
+                Hopkins University, Baltimore, MD, USA, Sept 2014 - April 2015
+                <ul>
+                  <li> We proposed an extension the standard MMI training that
+                    is applicable to semi-supervised training. </li>
+                  <li>The common approach to semi-supervised training is to do
+                    self-training, where some confidence measures are used to
+                    select only good utterances for training. Unlike this
+                    approach, where are confidences are decided prior to
+                    training, we incorporated the confidence measure into the
+                    training process itself. </li>
+                  <li>The proposed objective function for training takes a
+                    weighted average of the MMI criterion over all possible
+                    paths in the lattices.  This is effectively considers every
+                    path in the lattice as a possible reference transcript and
+                    weights them appropriately by the posterior probability of
+                    that path.</li>
+                  <li>We used this objective function with a multilingual style
+                    training architecture and showed up to 0.5% absolute WER
+                    improvement over a supervised trained DNN on the Fisher
+                    LVSCR task. </li>
+                </ul>
+              </li>
+              <li> <b> Multilingual and Semi-supervised Training with Deep
+                  Neural Networks</b><br />
+                <i>BOLT DARPA Project, Center for Language and Speech Processing
+                  (CLSP), </i> Johns Hopkins University, Baltimore, MD, USA,
+                Aug 2014 - Dec 2014
+                <ul>
+                  <li> Deep neural networks were used in a multitask
+                    architecture to do transfer learning from Arabic to
+                    Egyptian. </li>
+                  <li>Arabic and Egyptian languages are similar to each other,
+                    but use different phone sets. Hence, they have different
+                    output layer sizes. DNN initialized on trainied on a large
+                    amount of Arabic data was used with Egyptian data by
+                    retraining the final affine component. </li>
+                </ul>
+                <i>BABEL IARPA Project, Center for Language and Speech
+                  Processing (CLSP), </i> Johns Hopkins University, Baltimore,
+                MD, USA, Sept 2013 - June 2014
+                <ul>
+                  <li> Semi-supervised training of DNN was investigated using
+                    the self-training with frame-confidence-based selection (<a
+                      href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6707741&amp;tag=1">Karel
+                      et. al.</a> ). This was applied to Bottleneck feature
+                    neural networks. </li>
+                  <li> It was found that the optimal confidence threshold for
+                    frame selection was lower for bottleneck feature networks
+                    than for the hybrid HMM-DMMs. In fact, there was not much
+                    reduction in accuracy even without doing any frame
+                    filtering. This suggested that the networks that learn
+                    bottleneck features are not that sensitive to the target
+                    labels. </li>
+                  <li> The contributions to this project were part of our <a href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=7078630">open-source
+                      keyword spotting system</a>. </li>
+                </ul>
+              </li>
+              <li> <b> <a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=6707704&amp;tag=1">Acoutic
+                    modeling using tranform-based phone cluster adaptive
+                    training</a> </b> <br />
+                <i>Bachelor's Thesis </i> Indian Institute of Technology
+                Madras, Chennai, India, Oct 2012 - May 2013
+                <ul>
+                  <li> We proposed a new acoustic modeling technique called the
+                    Phone-Cluster Adaptive Training. </li>
+                  <li>When the amount of training data is sparse, training a
+                    conventional HMM-GMM for speech recognition is impractical.
+                    This problem is dealt with approaches such as tying of
+                    parameters, adding subspace constraints, factor analysis
+                    etc. </li>
+                  <li>In our approach, we model the parameters of
+                    context-dependent states to be obtained by the linear
+                    interpolation of several monophone cluster models, which are
+                    themselves obtained by adaptation using linear
+                    transformation of a canonical GMM. This approach is inspired
+                    from the Cluster Adaptive Training (CAT) for speaker
+                    adaptation and the Subspace Gaussian Mixture Model (SGMM). </li>
+                  <li>Such a modeling assumptions reduce the number of free
+                    parameters and is shown to improve WER on small LVCSR task
+                    like Aurora 4. This method was further useful in <a href="http://ieeexplore.ieee.org/xpl/articleDetails.jsp?arnumber=7078546&amp;navigation=1">
+                      cross-lingual training</a> of small ASR systems on various
+                    Indian languages in Mandi project.</li>
+                </ul>
+              </li>
+            </ol>
+            <h4><u> Older Projects</u></h4>
+            <ol>
+              <li> <b> Time-scaling and Pitch-scaling of synthesized speech</b>
+                <br />
+                Indian Institute of Technology Madras, Chennai, India, March -
+                May 2012
+                <ul>
+                  <li> The objective of this project was to vary the pitch and
+                    duration of a speech signal synthesized using the HTS
+                    toolkit.</li>
+                  <li>We used the Pitch-synchronous overlap-add method to
+                    synthesize the modified waveform by either copying or
+                    stretching windows of speech around pitchmarks.</li>
+                  <li>To robustly estimate pitchmarks, we used a simple pitch
+                    extraction algorithm using NCCFs, but smoothed it using on a
+                    Gaussian model to correct for double-pitch and half-pitch
+                    effects.</li>
+                </ul>
+              </li>
+              <li> <b> Pose-estimation of isolated 3D objects using
+                  superquadrics</b> <br />
+                Indian Institute of Technology Madras, Chennai, India, March -
+                May 2012
+                <ul>
+                  <li> Given a pair of stereo images of an isolated objected, we
+                    wanted to model it and determine its size, position and
+                    orientation. </li>
+                  <li>The stereo image pair is first converted into a 3D point
+                    cloud. The point cloud is the fit with multiple
+                    superquadrics using a greedy top-down clustering approach.</li>
+                </ul>
+              </li>
+              <li> <b> Respiratory rate detection by Pulse oximetry</b><br />
+                Indian Institute of Technology Madras, Chennai, India, Sept 2011
+                - May 2012
+                <ul>
+                  <li> The signal obtained from a pulse oximeter predominantly
+                    contains the signal from the heartbeat. But since absorption
+                    by blood is a function of its oxygen content, the signal is
+                    weakly modulated by the respiratory rate signal. We wanted
+                    to capture this for monitoring condition of pneumonia
+                    patients.</li>
+                  <li>We used a combination of analog filters for noise
+                    reduction and a digital bandpass filter on a Texas
+                    Instrument embedded DSP on downsampled signal to isolate the
+                    frequency of interest. </li>
+                  <li>Through, the approach was susceptible to artifacts, it
+                    gave reasonable performance on a stable breathing person.</li>
+                  <li>The design was among the top 25 entries to the Texas
+                    Instruments India Analog Design Contest.</li>
+                </ul>
+              </li>
+            </ol>
+            <p id="footer"> Copyright © 2015 <a href="#home">Vimal Manohar</a>.
+              <a href="http://www.jonasjohn.de/">Webdesign by Jonas John</a>. </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

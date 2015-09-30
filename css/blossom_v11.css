@@ -1,0 +1,89 @@
+/* 
+** blue:blossom - design variation 10 - "experimental blue blossom"
+**
+** This file contains a design variation of the base
+** stylesheet.
+** 
+** April 14, 2007 - (version 1.0)
+** 
+** This is a part of the open source template
+** "blue:blossom" made by Jonas John (www.jonasjohn.de)
+*/
+
+/* cover picture */
+#cover {
+	background-image: url("../images/bg_pattern.png");
+	padding: 0.5em 0em;
+}
+
+#inner_cover { 
+	background-image: url("../images/cover_blossom.jpg");
+	width: 100%;
+}
+
+#inner_cover:hover { background-color: #C8E3FB; }
+
+
+/* area next to the cover image: */
+#cover { background-color: #B4D8FA; }
+	
+/* header background */
+#inner_header {	background-color: #E3F1FD; }
+
+/* content background */
+#inner_content { background-color: #E3F1FD; }
+
+
+/* image colors: */
+.image {
+	background-color: #AFD9FA; 
+}
+	
+.image:hover {
+	background-color: #595959;
+} 
+
+/* navigation */
+#inner_header ul li a { 
+	background-color: #9CCEF8; 
+	color: #FFFFFF;
+	border-bottom: 1px solid #D8EBFC;
+	border-right: 1px solid #D8EBFC;
+}
+	
+#inner_header ul li a:hover, #inner_header ul li a:active { 
+	background-color: #595959;
+	border-bottom: 1px solid #cccccc;
+	border-right: 1px solid #cccccc;
+}
+
+/* content link colors */
+#content a {
+	background-color: #AFD9FA;
+}
+
+#content a:hover, #content a:active { 
+	background-color: #595959;
+}
+
+
+#cover { 
+	border-top: 1px solid #9DBBDD; 
+	border-bottom: 1px solid #9DBBDD;
+}
+
+/* 
+	Sizes
+	-----
+	Here you can modify your page width and height
+*/    
+
+	.full { width: 100%; }
+	.centered { width: 540px; }
+	#inner_cover { 
+		height: 50px; 
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-color: #E3F1FD;
+	}
+	

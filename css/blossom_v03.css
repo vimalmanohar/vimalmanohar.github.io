@@ -1,0 +1,47 @@
+/* 
+** blue:blossom - design variation 03 - "green office"
+**
+** This file contains a design variation of the base
+** stylesheet.
+** 
+** April 14, 2007 - (version 1.0)
+** 
+** This is a part of the open source template
+** "blue:blossom" made by Jonas John (www.jonasjohn.de)
+*/
+
+/* page background */
+body { background-color: #373B2F; }
+
+/* cover: */
+#cover { background-color: #3B4629; }
+#inner_cover { background-color: #FFFFFF; }
+
+/* cover picture */
+#inner_cover { background-image: url("../images/cover_grass.jpg"); }
+	
+	
+/* image colors: */
+.image {
+	background-color: #8FB649;
+}
+	
+.image:hover {
+	background-color: #3B4629;
+} 
+
+/* navigation */
+#inner_header h1 { color: #8FB649; }
+#inner_header ul li a, #inner_header ul li a:visited { background-color: #8FB649; color: #FFFFFF; }
+#inner_header ul li a:hover, #inner_header ul li a:active { background-color: #3B4629; color: #FFFFFF; }
+
+/* content link colors */
+#content a, #content a:visited {
+	background-color: #8FB649;
+	color: #FFFFFF; 
+}
+
+#content a:hover, #content a:active { 
+	background-color: #3B4629; 
+	color: #FFFFFF;
+}
