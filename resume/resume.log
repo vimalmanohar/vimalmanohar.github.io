@@ -1,12 +1,11 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.9.17)  30 SEP 2015 01:03
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015/Arch Linux) (preloaded format=pdflatex 2015.11.18)  7 JAN 2016 18:02
 entering extended mode
  restricted \write18 enabled.
- file:line:error style messages enabled.
  %&-line parsing enabled.
 **resume.tex
 (./resume.tex
-LaTeX2e <2015/01/01>
-Babel <3.9l> and hyphenation patterns for 79 languages loaded.
+LaTeX2e <2015/10/01> patch level 2
+Babel <3.9m> and hyphenation patterns for 79 languages loaded.
 (./res.cls
 Document Style `res' <26 Sep 89>.
 Document Class: res 2000/05/19 v1.4b Resume class
@@ -121,28 +120,34 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <10> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 84.
 
-Underfull \hbox (badness 10000) in paragraph at lines 108--119
+Overfull \hbox (34.33893pt too wide) in paragraph at lines 100--105
+\OT1/cmr/m/n/10 (ASRU), 2013 IEEE Work-shop on , pp.49,54, 8-12 Dec. 2013 doi: 
+10.1109/ASRU.2013.6707704 
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 114--125
 
  []
 
 [1
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
-Overfull \hbox (3.54622pt too wide) in paragraph at lines 155--174
+Overfull \hbox (3.54622pt too wide) in paragraph at lines 161--180
 [][] 
  []
 
 
-Overfull \hbox (111.95122pt too wide) in paragraph at lines 210--216
+Overfull \hbox (111.95122pt too wide) in paragraph at lines 216--222
 [][] 
  []
 
 [2] ) 
 Here is how much of TeX's memory you used:
- 625 strings out of 493089
- 7162 string characters out of 6140694
- 66525 words of memory out of 5000000
- 4160 multiletter control sequences out of 15000+600000
+ 625 strings out of 493054
+ 7162 string characters out of 6140585
+ 65697 words of memory out of 5000000
+ 4198 multiletter control sequences out of 15000+600000
  6357 words of font info for 23 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  29i,10n,43p,252b,272s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -154,7 +159,7 @@ cm/cmr8.pfb></usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></
 usr/share/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texm
 f-dist/fonts/type1/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-dist/fonts/t
 ype1/urw/zapfding/uzdr.pfb>
-Output written on resume.pdf (2 pages, 118149 bytes).
+Output written on resume.pdf (2 pages, 118331 bytes).
 PDF statistics:
  47 PDF objects out of 1000 (max. 8388607)
  33 compressed objects within 1 object stream
