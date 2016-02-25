@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="Content-Style-Type" content="text/css" />
+  <meta name="generator" content="pandoc" />
+  <title>Universal Speech Activity Detector (UnSAD)</title>
+  <style type="text/css">code{white-space: pre;}</style>
+</head>
+<body>
+<div id="header">
+<h1 class="title">Universal Speech Activity Detector (UnSAD)</h1>
+</div>
+<hr />
+<h1 id="introduction">Introduction</h1>
+<p>The objective of this work is to create a Universal Speech Activity Detector that can be used for a lot of different tasks, but primarily focusing on Automatic Speech Recognition (ASR) and iVector extraction. We would like to create a system that could be used in an online setting. The method must generalize to various environment conditions, background and foreground noise, different languages and volume levels.</p>
+<p>Under mismatch conditions, VAD methods do not generalize well to typical noise environments as seen in the ASpIRE challenge. One of the issues is that adaptation methods such as the ones using iVectors fail when the input speech signal has a lot non-speech. iVectors are known to be particularly sensitive to the data used for their estimation. This could perhaps be solved using an expensive 2-pass decoding approach, but ideally we would not like to spend time decoding long regions of silence. Hence, the proposed voice activity detection system serves two main purposes -- find segments for ASR system to decode and find appropriate speech frames for iVector adaptation.</p>
+<h1 id="modules">Modules</h1>
+<p>The Universal Speech Activity Detector consists of 3 modules -- Local feature extractor, Speech Activity Classifier and Segmenter. The modules are described along with their training method in the subsequence sections.</p>
+<h2 id="local-sub-band-feature-extractor">Local sub-band feature extractor</h2>
+<p>The local sub-band feature extractor module aims to extract features that are robust to variations in environment (foreground and background noise, channel), speaker, language and volume levels. This is a time-delay neural network (TDNN) that sees an input spanning a context of around 200 ms and predicts features related to signal-to-noise ratio (SNR) of the input signal. The input features are very high resolution MFCC features (152 dimensional) extracted with 152 Mel-frequency bins ranging from 330 Hz to 3000 Hz. The MFCC features are extracted on a window of 25 ms with a frame shift of 10 ms. We chose to use a short 25 ms window rather than a long 200 ms window as done in some other voice activity detection works because this might be more suitable in detection of short non-stationary sounds such as taps. The frequency range was chosen to make the network suitable for both 8kHz telephone speech and also 16kHz microphone speech signals. The network is about as big as an acoustic model because we intend to capture wide variations in inputs and we also have easy access to a lot of training data. The training data is a mixture of several speech corpora corrupted with reverberation, foreground and background noises and volume perturbed. The network is structured such that the lower layers of the network are wider than the upper layers. The actual structure used is described in the section <a href="#experiments">Experiments</a>. The objective function used for training depends on the feature to be extracted, and these are described in the following section.</p>
+<p>We have not done any experiments to compare the use of MFCC features versus other robust features defined in the literature such as PNCC, Gammatone Filterbank and Gabor filter features. The neural network should be capable of learning such transformations on seeing enough data if they are essential for predicting the sub-band features. MFCC is chosen in favor of mel-filterbank features because MFCCs can be compressed easily and easier on the disk I/O process.</p>
+<h3 id="neural-network-targets">Neural network targets</h3>
+<p>The targets for the local feature extractor neural network are sub-band level features reflecting the amount of clean energy (speech) vs noise energy (non-speech) in different sub-bands. We could use either the same number of sub-bands as the input (152 dimensions) or reduce the number of output dimensions. All the experiments reported are with 152 sub-band output and Ideal-ratio mask features defined below.<br />
+Various sub-band level features can be used in this module:</p>
+<ol style="list-style-type: decimal">
+<li>Signal-to-noise ratio (SNR) -- This is the ratio of mel filterbank coefficients of the clean signal to the mel filterbank coefficients of the noise signal. Since these features have a large dynamic range, they are used in the log-domain. The values range over the entire real line, but we apply upper and lower bounds to ensure that the features are not too large. With log sub-band SNR as targets, the local feature extractor neural network is trained with are trained with the squared error objective function.</li>
+<li>Ideal-ratio-mask (IRM) -- This is the ratio of mel filterbank coefficients of the clean signal to the sum of mel filterbank coefficients of clean and noise signals. The advantage of using this feature is that it takes values between 0 and 1 and can be treated as a probability of speech in the sub-band. We can see in the later sections that this allows us to easily use speech activity labels created from alignments to create better target values that can set features for some speech frames to all 1 and silence frames to all 0.</li>
+<li>Fbank-mask (FBM) -- This the ratio of mel filterbank coefficients of the clean signal to the mel filterbank coefficients of the corrupted signal. One advantage of these features is that it does not require the corrupted signal to be known, but only the corrupted signal. Although these values are usually between 0 and 1, it can be &gt; 1. Hence we have to use these in log-domain with upper and lower bounds and train the neural network with squared error objective function.</li>
+</ol>
+<h3 id="corpus-preparation">Corpus preparation</h3>
+<p>The corpus for training the local feature extractor consists of a generic speech corpus perturbed with many variations of channel conditions, background and foreground noise, volume levels, languages and speakers. The following are the steps in corpus preparation:-</p>
+<h4 id="selecting-a-good-base-corpus">Selecting a good base corpus</h4>
+<p>We selected the base corpus to be a mixture of 100 hrs of Fisher English corpus and 10 hrs of Babel Assamese limitedLP training corpus. The Fisher English corpus was selected because it was a relatively clean conversational speech corpus. Preliminary experiments on using a clean but read speech corpus like WSJ suggested poor generalization to common conversational speech. Babel Assamese limitedLP corpus was added for generalization to non-English languages and also to informal conversational speech. Experiments using only Fisher English pointed to poor performance on expressive speech involving laughter, high pitch etc. that is common in informal conversations.</p>
+<h4 id="adding-perturbations">Adding perturbations</h4>
+<ul>
+<li>Channel effects -- Room impulse responses (RIR) collected from various sources like Reverb2014, RWCP, AIRD etc. were used to simulate various room effects. For the purposes of speech activity detection for ASR, the reverberated speech is still treated as speech. So the reverberated speech signal is used as the 'clean' speech signal.</li>
+<li>Additive noise -- Many different kinds of noises, both foreground and background, were collected and randomly added to the reverberated speech signals to create corrupted speech signals. Some stationary noises came as part of the RIR corpora such as (insert appropriate sources). A lot of non-stationary noises were added from <a href="http://arxiv.org/abs/1510.08484">MUSAN corpus</a>.</li>
+<li>Volume level and SNR --<br />
+The noise energy level was scaled randomly to create corrupted speech signals at various SNR levels ranging from 20dB to -5dB. Additionally, we perturbed the volumes of the corrupted speech signals in order to make the local feature extractor invariant to energy of the input speech. This is useful in scenarios where the speech energy level changes due to reasons such as movement of speaker relative to the microphone or different speakers speaking in the same conversation.</li>
+</ul>
+<p>Preliminary experiments suggested that instead of randomly adding different kinds of noise, it is more useful to treat separately the two kinds of noises --foreground and background-- and create corrupted speech with foreground noise on top of background noise. Thus, we use two separate randomly chosen SNR level, one for background noise and one for foreground noise, to perturb the reverberated speech signal. The background noise is added to the entire conversation at a fixed randomly chosen SNR level. Several different foreground noises are then randomly selected and added at randomly chosen SNR levels.</p>
+<h4 id="preparing-targets">Preparing targets</h4>
+<p>Since we are artificially corrupting the speech signals, we have access to both the reverberated signal and the additive noise signal at the appropriate volume and SNR levels. Hence, we can compute any of the 3 targets defined in the section <a href="#neural-network-targets">Neural network targets</a>.</p>
+<p>While we can naively get targets using clean and noise / corrupted features as described above, this is usually not reliable because</p>
+<ol style="list-style-type: decimal">
+<li>In the regions of silence, all the energy in the frames must be considered as 'noise' rather than as part of 'clean' signal.</li>
+<li>The base corpora is not clean enough. There may be both speaker and non-speaker noises. If the files are used naively, the energy in these regions would be considered as 'clean'.</li>
+<li>We would like to add files to the training that are not corrupted with additive noise. If these files are used naively, then the noise energy would be 0.</li>
+</ol>
+<p>Hence we need speech activity labels to create better sub-band feature extractor targets. So the energy in the silence regions of signals are treated as 'noise' rather than part of 'clean' signal. This means that IRM targets would be 0 for these silence regions.</p>
+<p>Speech activity labels are just labels for each frame of being speech or non-speech. While these labels can be obtained from alignments obtained from a HMM-GMM system, it may not be accurate because not all noise is transcribed in the corpora and we also do not have transcriptions outside of the manually created segments supplied with the corpus. We have an additional step of <a href="#label-filtering">label filtering</a> described below.</p>
+<h4 id="label-filtering">Label filtering</h4>
+<p>The base corpora such as Fisher English and Babel Assamese are manually segmented. Selecting only these segments to train the sub-band feature extractor would make the model biased towards speech as there is too little silence in these regions. So we want to extend the base corpora to include regions outside the provided segments. We assume that the regions outside the segments are silence, even though there are many cases where those regions include speech. We deal with both the issue of speech in regions outside segments and also noise inside the manual segments by the process of transcription or label filtering. This process is similar to the approach used in the creation of Librispeech corpus and is described below:</p>
+<ul>
+<li>Extend segments -- Given a base corpus with manual segments, a new set of segments is created by including each contiguous region outside the manual segments as new segments. Suppose a manual segment spans 10.0s to 10.8s and the next manual segment spans 11.2s to 14.2s, then the new set includes an additional segment from 10.8s to 11.2s.</li>
+<li>Create reference labels -- For the manual segments, alignments can be obtained from a HMM-GMM system trained on that base corpus. These alignments can be converted to speech activity labels by deterministically mapping phones into 3 classes -- 0 for silence, 1 for speech and 2 for noise and 3 for other stuff such as OOV. For segments outside of the manual segments, all frames are considered silence.</li>
+<li>Create hypothesis labels -- All the segments from the new set of segments are decoded using the HMM-GMM system with a trigram language model to get the best hypothesis alignment. This is converted to speech activity labels by the same deterministic mapping into 3 classes.</li>
+<li>Select good frames -- For the data corrupted with additive noise, the frames that are either silence (class 0) or speech (class 1) in both reference labels and hypothesis labels are selected for training and assigned a contribution weight of 1.0 to the objective function. However, for the data without additive noise added, we only select frames that are silence (class 0). This is because we don't want to allow the training to use frames with target IRM 1.0 in all sub-bands, as would be the case for speech frames since 'noise' energy is 0. All other frames have zero contribution to the objective function and the gradients. However, these frames might still be used in the input side if they are within the input context required for the neural network computation of some other frame.</li>
+</ul>
+<h2 id="speech-activity-detector">Speech Activity Detector</h2>
+<p>The Speech Activity Detector is a simple single hidden-layer neural network that takes the extracted local sub-band features possibly along with other features such as log-mel-filterbank features and probability of voicing as input and predicts speech / non-speech labels. The reason this module is separate from the sub-band feature extractor module is the follows:</p>
+<ol style="list-style-type: decimal">
+<li>The sub-band feature extract is designed to look only at a local context, while the speech activity detector can have much longer context. For e.g., we can have the speech activity detector to be an LSTM with infinite context.</li>
+<li>Being a small network, it can be easily trained on small amount of labelled data in a different domain.</li>
+</ol>
+<p>The corpus for speech activity detector can be prepared with target labels obtained from the <a href="#label-filtering">label filtering</a> procedure.</p>
+<h2 id="segmenter">Segmenter</h2>
+<p>The output of the speech activity detector neural network is converted into log-likelihoods by subtracting the log-priors of speech and silence classes in the training data. This is then fed to a HMM decoder with a 30 frame minimum duration constraint for both speech and silence classes. The transition probabilities for speech HMM is chosen to be 0.9 for the self-loop and 0.1 for transition to silence. The transition probabilities for the silence HMM is chosen to be both 0.5 for self-loop and transition to speech. This is fixed by user and not trained. The silence and speech probabilities are also fixed and adjusted to control false alarm vs missed speech. Viterbi decoding through this HMM gives the best hypothesis, which is further post-processed. Nearby segments of speech separated by 0.1s are merge together. Speech segments longer than 10s is split into overlapping segments with an overlap of 1s.</p>
+<p>Getting speech frames for iVector extraction uses the same segmenter, but with prior probability on speech reduced to around 0.1 or lower to decrease the amount of false alarms. The statistics for iVector estimation is accumulated only from these 'high probability' speech frames.</p>
+<h2 id="experiments">Experiments</h2>
+<p>The proposed universal speech activity detection system is trained on 100 hours of Fisher English corpus and 10 hours of Babel Assamese corpus perturbed with random foreground and background noise added at different SNR levels, various room impulse responses and various volume levels. The system is evaluated for ASR task on Aspire and several Babel languages (Bengali, Haitian, Lao, Zulu, Tamil, Mongolian, Guarrani, Amharic, Igbo). The performance of the VAD system is shown to be comparable to using manually annotated segmentation in Babel and using 2-pass decoding in ASpIRE.</p>
+<h3 id="results">Results</h3>
+<table>
+<thead>
+<tr class="header">
+<th align="left">Dataset</th>
+<th align="left">Baseline</th>
+<th align="left">SAD</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">Aspire</td>
+<td align="left">30.9</td>
+<td align="left">31.5</td>
+</tr>
+<tr class="even">
+<td align="left">Tamil</td>
+<td align="left">79.7</td>
+<td align="left">80.0</td>
+</tr>
+<tr class="odd">
+<td align="left">Javanese</td>
+<td align="left">67.5</td>
+<td align="left">68.4</td>
+</tr>
+<tr class="even">
+<td align="left">Igbo</td>
+<td align="left">70.5</td>
+<td align="left">71.4</td>
+</tr>
+<tr class="odd">
+<td align="left">Amharic</td>
+<td align="left">56.6</td>
+<td align="left">57.5</td>
+</tr>
+<tr class="even">
+<td align="left">Gurranni</td>
+<td align="left">60.4</td>
+<td align="left">60.9</td>
+</tr>
+<tr class="odd">
+<td align="left">Mongolian</td>
+<td align="left">72.8</td>
+<td align="left">74.1</td>
+</tr>
+</tbody>
+</table>
+<p>From the table, we see that the segments from SAD along with speech-frame-weighted iVector estimation gives a WER performance of 31.5%, which is comparable to the two-pass decoding system in the dev dataset of <a href="www.danielpovey.com/files/2015_interspeech_aspire.pdf">Aspire challenge</a>. This however makes the whole decoding process around 2x faster because the SAD can be done in a fraction of real-time.</p>
+<p>From the table, we also see that the segments from SAD consistently perform almost as well as the manually annotated segments on several different Babel languages.</p>
+</body>
+</html>
