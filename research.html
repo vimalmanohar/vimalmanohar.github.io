@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html
-  lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html
+  xmlns="http://www.w3.org/1999/xhtml" lang="en">
   <head>
     <meta http-equiv="content-type" content="application/xhtml+xml; charset=iso-8859-1" />
     <title>Vimal Manohar</title>
@@ -9,14 +9,14 @@
     <meta content="Speech Researcher at CLSP, Johns Hopkins University" name="description" />
     <meta content="Vimal Manohar, Speech Recognition, PhD, CLSP" name="keywords" />
     <!-- base stylesheet - construct -->
-    <link title="Default" media="screen, tv, projection" href="css/blossom_base.css"
+    <link title="Default" media="screen, tv, projection" href="css/blossom_base.css"
       type="text/css" rel="stylesheet" />
     <!-- additional stylesheet -->
-    <link media="screen, tv, projection" href="css/blossom_v09.css" type="text/css"
+    <link media="screen, tv, projection" href="css/blossom_v09.css" type="text/css"
       rel="stylesheet" />
     <!-- print stylesheet (and print preview) -->
     <link media="print" href="css/print.css" type="text/css" rel="stylesheet" />
-    <link title="Print Preview" media="screen" href="css/print.css" type="text/css"
+    <link title="Print Preview" media="screen" href="css/print.css" type="text/css"
       rel="alternative stylesheet" />
   </head>
   <body id="your-site-id">
@@ -54,21 +54,47 @@
             <p> </p>
             <h4><u> Recent Project Works</u></h4>
             <ol>
-              <li> <b> Speech Activity Detection using SNR </b> <br />
+              <li><strong>Lightly-supervised training for ASR</strong></li>
+              <i> Center for Language and Speech Processing (CLSP), </i> Johns
+              Hopkins University, Baltimore, MD, USA, Sept 2016 - Sept 2017
+              <ul>
+                <li> This project focuses on two scenario of imperfect
+                  transcription -- First, when some part of the transcript is
+                  wrong or does not match the audio and needs to be removed and
+                  re-segmented. Second, when there is a long audio recording
+                  with transcription (possibly imperfect)
+                  that needs to be segmented into chunks and aligned with part
+                  of the transcription. </li>
+              </ul>
+              <li><b>Speech Activity Detection using neural networks </b> <br />
                 <i>Center for Language and Speech Processing (CLSP), </i> Johns
-                Hopkins University, Baltimore, MD, USA, Sept 2015 - Current
+                Hopkins University, Baltimore, MD, USA, Sept 2015 - Sept 2017
                 <ul>
-                  <li> This is some on-going word to use sub-band SNR as
-                    features to do a generic speech activity detection system
-                    for ASR. A pull request with some description of the work
-                    can be found <a href="https://github.com/kaldi-asr/kaldi/pull/353">here</a>.
-                  </li>
+                  <li> We built a neural network-based speech activity detection
+                    system with perturbation using various room impulse
+                    responses, additive noises from the MUSAN corpus, speed and
+                    volume in order to improve robustness to different
+                    environment. </li>
+                  <li>We used a network with TDNN layers interleaved with LSTM
+                    or statistics-pooling layer to get a long temporal context
+                    of about 1s. The network was trained with cross-entropy
+                    objective to predict speech / non-speech classes. We also
+                    trained for auxiliary objectives of predicting sub-band
+                    ideal-ratio mask features and music / non-music labels to
+                    improve generalization. </li>
+                  <li>The network was designed to be used in an online setting
+                    and we used a simple HMM-based Viterbi decoder with a
+                    minimum duration constraint to get speech and non-speech
+                    segments.</li>
+                  <li>A description of our system submitted to the OpenSAT 2017
+                    challenge is available <a href="files/jhu_opensat.pdf" title="JHU-CLSP System Description for OpenSAT SAD Evaluation">here</a>.</li>
+                  <li>A modification of this system is merged to <a href="https://github.com/kaldi-asr/kaldi/blob/master/egs/swbd/s5c/local/run_asr_segmentation.sh">kaldi</a>.</li>
                 </ul>
               </li>
               <li> <b> Probabilitic Transcription of Languages with no
                   native-language transcribers</b> <br />
                 <i>Jelinek Summer Workshop on Speech and Language Technology
-                  (JSALT) 2015, </i> University of Washingon Seattle, Seattle,
+                  (JSALT) 2015, </i> University of Washington Seattle, Seattle,
                 WAS, USA, July - Aug 2015
                 <ul>
                   <li> We wanted to study the utility of mismatched
@@ -88,7 +114,7 @@
                     The adapted models gave up to 25% relative improvement in
                     phone error rates on an unseen evaluation set. </li>
                   <li>These improvements were significantly better than
-                    improvements seen with semi-supervised trainig using ASR
+                    improvements seen with semi-supervised training using ASR
                     transcripts of unlabelled data in target language. This
                     experiment shows utility of the mismatched transcriptions
                     compared to other forms of weak transcriptions such as ASR
@@ -146,7 +172,7 @@
                 MD, USA, Sept 2013 - June 2014
                 <ul>
                   <li> Semi-supervised training of DNN was investigated using
-                    the self-training with frame-confidence-based selection (<a
+                    the self-training with frame-confidence-based selection (<a
                       href="http://ieeexplore.ieee.org/xpls/abs_all.jsp?arnumber=6707741&amp;tag=1">Karel
                       et. al.</a> ). This was applied to Bottleneck feature
                     neural networks. </li>
